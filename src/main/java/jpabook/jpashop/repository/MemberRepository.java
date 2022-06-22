@@ -2,6 +2,7 @@ package jpabook.jpashop.repository;
 
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -35,6 +36,7 @@ public class MemberRepository {
     }
     public List<Member> findAll() {
         // JPQL : Entity 대상으로 쿼리 (SQL은 Table 대상으로 쿼리)
+        // 기본 생성자(default Constructor)가 있어야 쿼리된 데이터가 Member 객체로 생성됨.
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
     }

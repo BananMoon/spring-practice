@@ -32,7 +32,7 @@ public class OrderServiceTest {
         //given
         Member member = createMember("moon", new Address("화성시", "동탄대로 2길", "23242"));
 
-        Book book = createBook("시골 JPA", 10000, 10);
+        Book book = createBook("김영한", "isbn", "시골 JPA", 10000, 10);
         int orderCount = 2;
 
         //when
@@ -50,7 +50,7 @@ public class OrderServiceTest {
     public void 상품주문_재고수량초과() throws Exception {
         //given
         Member member = createMember("moon", new Address("화성시", "동탄대로 2길", "23242"));
-        Book book = createBook("시골 JPA", 10000, 10);
+        Book book = createBook("김영한", "isbn", "시골 JPA", 10000, 10);
         int orderCount = 12;
 
         //when
@@ -64,7 +64,7 @@ public class OrderServiceTest {
     public void 주문취소() throws Exception {
         // given
         Member member = createMember("moon", new Address("화성시", "동탄대로 2길", "23242"));
-        Book book = createBook("시골 JPA", 10000, 10);
+        Book book = createBook("김영한", "isbn", "시골 JPA", 10000, 10);
         int orderCount = 8;
 
         Long orderId = orderService.order(member.getId(), book.getId(), orderCount);
@@ -76,8 +76,8 @@ public class OrderServiceTest {
         assertEquals("주문 취소 시 재고수량이 복구되어야한다.", 10, book.getStockQuantity());
     }
 
-    private Book createBook(String name, int price, int stockQuantity) {
-        Book book = new Book(name, price, stockQuantity);
+    private Book createBook(String author, String isbn, String name, int price, int stockQuantity) {
+        Book book = Book.createBook(author, isbn, name, price, stockQuantity);
         em.persist(book);
         return book;
     }

@@ -1,5 +1,6 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.controller.ItemForm;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,8 @@ public class ItemService {
     private final ItemRepository itemRepository;
 
     @Transactional
-    public void save(Item item)  {
-        itemRepository.save(item);
+    public void save(ItemForm itemForm)  {
+        itemRepository.save(itemForm.toEntity());
     }
 
     public List<Item> findItems() {

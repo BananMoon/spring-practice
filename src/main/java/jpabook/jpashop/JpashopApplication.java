@@ -8,10 +8,6 @@ public class JpashopApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpashopApplication.class, args);
-
-		LombokTest hello = new LombokTest();
-		hello.setData("set!");
-		System.out.println(hello.getData());
 	}
 
 }

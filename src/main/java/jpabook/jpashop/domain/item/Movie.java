@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("M")
+@DiscriminatorValue("movie")
 @Getter
 public class Movie extends Item {
 
@@ -14,7 +14,13 @@ public class Movie extends Item {
 
     private String actor;
 
-    Movie(String name, int price, int stockQuantity) {
-        super(name, price, stockQuantity);
+    private Movie() {}
+    private Movie(String director, String actor, String name, int price, int stockQuantity) {
+        super();
+        this.director = director;
+        this.actor = actor;
+    }
+    public static Movie createMovie(String director, String actor, String name, int price, int stockQuantity) {
+        return new Movie(director, actor, name, price, stockQuantity);
     }
 }

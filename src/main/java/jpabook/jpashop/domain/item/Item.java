@@ -37,6 +37,10 @@ public abstract class Item {
         this.price = price;
         this.stockQuantity = stockQuantity;
     }
+
+    protected Item() {
+
+    }
     // DDD: 엔티티 자체가 해결해야하는 작업은 엔티티 내에 비즈니스 로직으로 작성하는 것이 좋다.
     /**
      * stock 증가

@@ -9,7 +9,7 @@ public class ItemTest {
     @Test(expected = NotEnoughStockException.class)
     public void 재고수량초과() throws Exception {
         //given
-        Book book = new Book("시골 JPA", 10000, 10);
+        Book book = Book.createBook("김영한", "isbn", "시골 JPA", 10000, 10);
         //when
         book.reduceStock(13);
 
